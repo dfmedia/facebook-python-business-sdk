@@ -53,26 +53,32 @@ class Post(
         comments_mirroring_domain = 'comments_mirroring_domain'
         coordinates = 'coordinates'
         created_time = 'created_time'
+        delivery_growth_optimizations = 'delivery_growth_optimizations'
         description = 'description'
+        entities = 'entities'
         event = 'event'
         expanded_height = 'expanded_height'
         expanded_width = 'expanded_width'
         feed_targeting = 'feed_targeting'
+        formatting = 'formatting'
         field_from = 'from'
         full_picture = 'full_picture'
         height = 'height'
         icon = 'icon'
         id = 'id'
+        implicit_place = 'implicit_place'
         instagram_eligibility = 'instagram_eligibility'
         is_app_share = 'is_app_share'
         is_eligible_for_promotion = 'is_eligible_for_promotion'
         is_expired = 'is_expired'
         is_hidden = 'is_hidden'
+        is_inline_created = 'is_inline_created'
         is_instagram_eligible = 'is_instagram_eligible'
         is_popular = 'is_popular'
         is_published = 'is_published'
         is_spherical = 'is_spherical'
         link = 'link'
+        live_video_eligibility = 'live_video_eligibility'
         message = 'message'
         message_tags = 'message_tags'
         multi_share_end_card = 'multi_share_end_card'
@@ -87,6 +93,7 @@ class Post(
         promotable_id = 'promotable_id'
         promotion_status = 'promotion_status'
         properties = 'properties'
+        publishing_stats = 'publishing_stats'
         scheduled_publish_time = 'scheduled_publish_time'
         shares = 'shares'
         source = 'source'
@@ -97,11 +104,13 @@ class Post(
         target = 'target'
         targeting = 'targeting'
         timeline_visibility = 'timeline_visibility'
+        translations = 'translations'
         type = 'type'
         updated_time = 'updated_time'
         via = 'via'
         video_buying_eligibility = 'video_buying_eligibility'
         width = 'width'
+        will_be_autocropped_when_deliver_to_instagram = 'will_be_autocropped_when_deliver_to_instagram'
 
     class BackdatedTimeGranularity:
         day = 'day'
@@ -515,6 +524,7 @@ class Post(
                 'AUTO_LOOKALIKE',
                 'AUTO_PAGE_LOOKALIKE',
                 'AUTO_TARGETING',
+                'COUNTRY_AND_INTEREST',
                 'CREATE_NEW',
                 'CUSTOM_AUDIENCE',
                 'DISTRICT',
@@ -526,6 +536,7 @@ class Post(
                 'IG_PROMOTED_POST_AUTO',
                 'LOCAL',
                 'LOOKALIKE',
+                'MARKETPLACE_DEFAULT',
                 'MULT_CUSTOM_AUDIENCES',
                 'NCPP',
                 'SAVED_AUDIENCE',
@@ -549,6 +560,8 @@ class Post(
                 'FIND_A_GROUP',
                 'FIND_YOUR_GROUPS',
                 'FOLLOW_NEWS_STORYLINE',
+                'FOLLOW_PAGE',
+                'FOLLOW_USER',
                 'GET_DIRECTIONS',
                 'GET_OFFER',
                 'GET_OFFER_VIEW',
@@ -566,8 +579,11 @@ class Post(
                 'NO_BUTTON',
                 'OPEN_LINK',
                 'ORDER_NOW',
+                'PAY_TO_ACCESS',
                 'PLAY_GAME',
+                'PURCHASE_GIFT_CARDS',
                 'RECORD_NOW',
+                'REQUEST_TIME',
                 'SAY_THANKS',
                 'SEE_MORE',
                 'SELL_NOW',
@@ -747,26 +763,32 @@ class Post(
         'comments_mirroring_domain': 'string',
         'coordinates': 'Object',
         'created_time': 'datetime',
+        'delivery_growth_optimizations': 'list<string>',
         'description': 'string',
+        'entities': 'Object',
         'event': 'Event',
         'expanded_height': 'unsigned int',
         'expanded_width': 'unsigned int',
         'feed_targeting': 'Object',
+        'formatting': 'string',
         'from': 'Object',
         'full_picture': 'string',
         'height': 'unsigned int',
         'icon': 'string',
         'id': 'string',
+        'implicit_place': 'Place',
         'instagram_eligibility': 'string',
         'is_app_share': 'bool',
         'is_eligible_for_promotion': 'bool',
         'is_expired': 'bool',
         'is_hidden': 'bool',
+        'is_inline_created': 'bool',
         'is_instagram_eligible': 'bool',
         'is_popular': 'bool',
         'is_published': 'bool',
         'is_spherical': 'bool',
         'link': 'string',
+        'live_video_eligibility': 'list<string>',
         'message': 'string',
         'message_tags': 'list',
         'multi_share_end_card': 'bool',
@@ -781,6 +803,7 @@ class Post(
         'promotable_id': 'string',
         'promotion_status': 'string',
         'properties': 'list',
+        'publishing_stats': 'unsigned int',
         'scheduled_publish_time': 'float',
         'shares': 'Object',
         'source': 'string',
@@ -791,11 +814,13 @@ class Post(
         'target': 'Profile',
         'targeting': 'Object',
         'timeline_visibility': 'string',
+        'translations': 'map<string, string>',
         'type': 'string',
         'updated_time': 'datetime',
         'via': 'Object',
         'video_buying_eligibility': 'list<string>',
         'width': 'unsigned int',
+        'will_be_autocropped_when_deliver_to_instagram': 'bool',
     }
     @classmethod
     def _get_field_enum_info(cls):

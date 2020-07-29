@@ -70,6 +70,10 @@ class AdsInsights(
         campaign_name = 'campaign_name'
         canvas_avg_view_percent = 'canvas_avg_view_percent'
         canvas_avg_view_time = 'canvas_avg_view_time'
+        catalog_segment_value = 'catalog_segment_value'
+        catalog_segment_value_mobile_purchase_roas = 'catalog_segment_value_mobile_purchase_roas'
+        catalog_segment_value_omni_purchase_roas = 'catalog_segment_value_omni_purchase_roas'
+        catalog_segment_value_website_purchase_roas = 'catalog_segment_value_website_purchase_roas'
         clicks = 'clicks'
         conversion_rate_ranking = 'conversion_rate_ranking'
         conversion_values = 'conversion_values'
@@ -126,6 +130,7 @@ class AdsInsights(
         outbound_clicks_ctr = 'outbound_clicks_ctr'
         place_page_name = 'place_page_name'
         purchase_roas = 'purchase_roas'
+        qualifying_question_qualify_answer_rate = 'qualifying_question_qualify_answer_rate'
         quality_ranking = 'quality_ranking'
         quality_score_ectr = 'quality_score_ectr'
         quality_score_ecvr = 'quality_score_ecvr'
@@ -173,6 +178,7 @@ class AdsInsights(
         value_28d_view = '28d_view'
         value_7d_click = '7d_click'
         value_7d_view = '7d_view'
+        dda = 'dda'
         value_default = 'default'
 
     class ActionBreakdowns:
@@ -290,6 +296,10 @@ class AdsInsights(
         'campaign_name': 'string',
         'canvas_avg_view_percent': 'string',
         'canvas_avg_view_time': 'string',
+        'catalog_segment_value': 'list<AdsActionStats>',
+        'catalog_segment_value_mobile_purchase_roas': 'list<AdsActionStats>',
+        'catalog_segment_value_omni_purchase_roas': 'list<AdsActionStats>',
+        'catalog_segment_value_website_purchase_roas': 'list<AdsActionStats>',
         'clicks': 'string',
         'conversion_rate_ranking': 'string',
         'conversion_values': 'list<AdsActionStats>',
@@ -346,6 +356,7 @@ class AdsInsights(
         'outbound_clicks_ctr': 'list<AdsActionStats>',
         'place_page_name': 'string',
         'purchase_roas': 'list<AdsActionStats>',
+        'qualifying_question_qualify_answer_rate': 'string',
         'quality_ranking': 'string',
         'quality_score_ectr': 'string',
         'quality_score_ecvr': 'string',

@@ -170,6 +170,7 @@ class AdAccountTargetingUnified(
         industries = 'industries'
         instagram_hashtags = 'instagram_hashtags'
         instagram_positions = 'instagram_positions'
+        instream_video_skippable_excluded = 'instream_video_skippable_excluded'
         instream_video_sponsorship_placements = 'instream_video_sponsorship_placements'
         interest_defaults_source = 'interest_defaults_source'
         interested_in = 'interested_in'
@@ -202,6 +203,7 @@ class AdAccountTargetingUnified(
         rtb_flag = 'rtb_flag'
         site_category = 'site_category'
         targeting_optimization = 'targeting_optimization'
+        targeting_relaxation_types = 'targeting_relaxation_types'
         timezones = 'timezones'
         topic = 'topic'
         trending = 'trending'
@@ -237,6 +239,7 @@ class AdAccountTargetingUnified(
         post_engagement = 'POST_ENGAGEMENT'
         product_catalog_sales = 'PRODUCT_CATALOG_SALES'
         reach = 'REACH'
+        store_visits = 'STORE_VISITS'
         video_views = 'VIDEO_VIEWS'
 
     _field_types = {

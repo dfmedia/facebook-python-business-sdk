@@ -43,6 +43,7 @@ class StreamingReaction(
 
     class ReactionType:
         angry = 'ANGRY'
+        care = 'CARE'
         haha = 'HAHA'
         like = 'LIKE'
         love = 'LOVE'

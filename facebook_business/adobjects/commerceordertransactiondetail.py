@@ -32,26 +32,26 @@ github and we'll fix in our codegen framework. We'll not be able to accept
 pull request for this class.
 """
 
-class VideoGameShow(
+class CommerceOrderTransactionDetail(
     AbstractCrudObject,
 ):
 
     def __init__(self, fbid=None, parent_id=None, api=None):
-        self._isVideoGameShow = True
-        super(VideoGameShow, self).__init__(fbid, parent_id, api)
+        self._isCommerceOrderTransactionDetail = True
+        super(CommerceOrderTransactionDetail, self).__init__(fbid, parent_id, api)
 
     class Field(AbstractObject.Field):
-        end_time = 'end_time'
-        game_status = 'game_status'
-        game_type = 'game_type'
+        net_payment_amount = 'net_payment_amount'
+        order_details = 'order_details'
+        payout_reference_id = 'payout_reference_id'
+        processing_fee = 'processing_fee'
+        tax_rate = 'tax_rate'
+        transaction_date = 'transaction_date'
+        transaction_type = 'transaction_type'
+        transfer_id = 'transfer_id'
         id = 'id'
-        start_time = 'start_time'
 
-    class Action:
-        end_game = 'END_GAME'
-        start_game = 'START_GAME'
-
-    def api_get(self, fields=None, params=None, batch=None, success=None, failure=None, pending=False):
+    def get_tax_details(self, fields=None, params=None, batch=None, success=None, failure=None, pending=False):
         from facebook_business.utils import api_utils
         if batch is None and (success is not None or failure is not None):
           api_utils.warning('`success` and `failure` callback only work for batch call.')
@@ -62,44 +62,12 @@ class VideoGameShow(
         request = FacebookRequest(
             node_id=self['id'],
             method='GET',
-            endpoint='/',
+            endpoint='/tax_details',
             api=self._api,
             param_checker=TypeChecker(param_types, enums),
-            target_class=VideoGameShow,
-            api_type='NODE',
-            response_parser=ObjectParser(reuse_object=self),
-        )
-        request.add_params(params)
-        request.add_fields(fields)
-
-        if batch is not None:
-            request.add_to_batch(batch, success=success, failure=failure)
-            return request
-        elif pending:
-            return request
-        else:
-            self.assure_call()
-            return request.execute()
-
-    def api_update(self, fields=None, params=None, batch=None, success=None, failure=None, pending=False):
-        from facebook_business.utils import api_utils
-        if batch is None and (success is not None or failure is not None):
-          api_utils.warning('`success` and `failure` callback only work for batch call.')
-        param_types = {
-            'action': 'action_enum',
-        }
-        enums = {
-            'action_enum': VideoGameShow.Action.__dict__.values(),
-        }
-        request = FacebookRequest(
-            node_id=self['id'],
-            method='POST',
-            endpoint='/',
-            api=self._api,
-            param_checker=TypeChecker(param_types, enums),
-            target_class=VideoGameShow,
-            api_type='NODE',
-            response_parser=ObjectParser(reuse_object=self),
+            target_class=AbstractCrudObject,
+            api_type='EDGE',
+            response_parser=ObjectParser(target_class=AbstractCrudObject, api=self._api),
         )
         request.add_params(params)
         request.add_fields(fields)
@@ -114,16 +82,19 @@ class VideoGameShow(
             return request.execute()
 
     _field_types = {
-        'end_time': 'datetime',
-        'game_status': 'string',
-        'game_type': 'string',
+        'net_payment_amount': 'Object',
+        'order_details': 'CommerceOrder',
+        'payout_reference_id': 'string',
+        'processing_fee': 'Object',
+        'tax_rate': 'string',
+        'transaction_date': 'string',
+        'transaction_type': 'string',
+        'transfer_id': 'string',
         'id': 'string',
-        'start_time': 'datetime',
     }
     @classmethod
     def _get_field_enum_info(cls):
         field_enum_info = {}
-        field_enum_info['Action'] = VideoGameShow.Action.__dict__.values()
         return field_enum_info
 
 

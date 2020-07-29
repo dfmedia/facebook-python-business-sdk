@@ -70,6 +70,7 @@ class Campaign(
         recommendations = 'recommendations'
         source_campaign = 'source_campaign'
         source_campaign_id = 'source_campaign_id'
+        special_ad_categories = 'special_ad_categories'
         special_ad_category = 'special_ad_category'
         spend_cap = 'spend_cap'
         start_time = 'start_time'
@@ -147,9 +148,10 @@ class Campaign(
         post_engagement = 'POST_ENGAGEMENT'
         product_catalog_sales = 'PRODUCT_CATALOG_SALES'
         reach = 'REACH'
+        store_visits = 'STORE_VISITS'
         video_views = 'VIDEO_VIEWS'
 
-    class SpecialAdCategory:
+    class SpecialAdCategories:
         credit = 'CREDIT'
         employment = 'EMPLOYMENT'
         housing = 'HOUSING'
@@ -158,6 +160,12 @@ class Campaign(
     class Operator:
         all = 'ALL'
         any = 'ANY'
+
+    class SpecialAdCategory:
+        credit = 'CREDIT'
+        employment = 'EMPLOYMENT'
+        housing = 'HOUSING'
+        none = 'NONE'
 
     class StatusOption:
         active = 'ACTIVE'
@@ -277,6 +285,7 @@ class Campaign(
             'objective': 'objective_enum',
             'pacing_type': 'list<string>',
             'promoted_object': 'Object',
+            'special_ad_categories': 'list<special_ad_categories_enum>',
             'special_ad_category': 'special_ad_category_enum',
             'spend_cap': 'unsigned int',
             'status': 'status_enum',
@@ -286,6 +295,7 @@ class Campaign(
             'bid_strategy_enum': Campaign.BidStrategy.__dict__.values(),
             'execution_options_enum': Campaign.ExecutionOptions.__dict__.values(),
             'objective_enum': Campaign.Objective.__dict__.values(),
+            'special_ad_categories_enum': Campaign.SpecialAdCategories.__dict__.values(),
             'special_ad_category_enum': Campaign.SpecialAdCategory.__dict__.values(),
             'status_enum': Campaign.Status.__dict__.values(),
         }
@@ -413,10 +423,8 @@ class Campaign(
           api_utils.warning('`success` and `failure` callback only work for batch call.')
         from facebook_business.adobjects.ad import Ad
         param_types = {
-            'ad_draft_id': 'string',
             'date_preset': 'date_preset_enum',
             'effective_status': 'list<string>',
-            'include_drafts': 'bool',
             'time_range': 'Object',
             'updated_since': 'int',
         }
@@ -451,10 +459,8 @@ class Campaign(
           api_utils.warning('`success` and `failure` callback only work for batch call.')
         from facebook_business.adobjects.adset import AdSet
         param_types = {
-            'ad_draft_id': 'string',
             'date_preset': 'date_preset_enum',
             'effective_status': 'list<effective_status_enum>',
-            'include_drafts': 'bool',
             'is_completed': 'bool',
             'time_range': 'Object',
         }
@@ -746,6 +752,7 @@ class Campaign(
         'recommendations': 'list<AdRecommendation>',
         'source_campaign': 'Campaign',
         'source_campaign_id': 'string',
+        'special_ad_categories': 'list<string>',
         'special_ad_category': 'string',
         'spend_cap': 'string',
         'start_time': 'datetime',
@@ -768,8 +775,9 @@ class Campaign(
         field_enum_info['DatePreset'] = Campaign.DatePreset.__dict__.values()
         field_enum_info['ExecutionOptions'] = Campaign.ExecutionOptions.__dict__.values()
         field_enum_info['Objective'] = Campaign.Objective.__dict__.values()
-        field_enum_info['SpecialAdCategory'] = Campaign.SpecialAdCategory.__dict__.values()
+        field_enum_info['SpecialAdCategories'] = Campaign.SpecialAdCategories.__dict__.values()
         field_enum_info['Operator'] = Campaign.Operator.__dict__.values()
+        field_enum_info['SpecialAdCategory'] = Campaign.SpecialAdCategory.__dict__.values()
         field_enum_info['StatusOption'] = Campaign.StatusOption.__dict__.values()
         return field_enum_info
 
